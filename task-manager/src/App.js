@@ -1,20 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from "./components/HomePage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RegisterationPage from "./components/RegisterationPage";
 import LoginPage from "./components/LoginPage";
-import TaskBoard from "./components/TaskBoard";
-import SecuredRoute from "./components/SecuredRoute";
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterationPage />} />
+        <Route path="/" element={<RegisterationPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/board" element={<SecuredRoute><TaskBoard /></SecuredRoute>} />
+        <Route path="/tasks" element={<TaskList />} />
+        <Route path="/tasks/new" element={<TaskForm />} />
       </Routes>
     </Router>
   );

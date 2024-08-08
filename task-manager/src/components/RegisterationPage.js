@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useState } from "react";
+import { registerUser } from "../services/api";
 
 const RegisterationPage = () => {
-  return (
-    <div>RegisterationPage</div>
-  )
-}
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-export default RegisterationPage
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      await registerUser({ username, password });
+    } catch (error) {
+      alert("Registeration Failed");
+    }
+  };
+
+  return (
+    <form onSubmit={handleRegister}>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit">Register</button>
+    </form>
+  );
+};
+
+export default RegisterationPage;
